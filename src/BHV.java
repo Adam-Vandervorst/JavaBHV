@@ -32,7 +32,11 @@ public class BHV {
     }
 
     public static void main(String[] args) {
-        System.out.println(BHV.rand().active());
-    }
+        BHV x = BHV.rand();
+        BHV y = BHV.rand();
+        BHV z = x.xor(y);
 
+        System.out.println(z.active());
+        assert x.xor(z).xor(y).active() == 0;
+    }
 }
