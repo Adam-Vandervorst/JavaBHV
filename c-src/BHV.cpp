@@ -9,11 +9,37 @@ JNIEXPORT void JNICALL Java_BHV_randInto(JNIEnv *env, jclass, jbyteArray ja) {
     env->ReleasePrimitiveArrayCritical(ja, a, 0);
 }
 
+JNIEXPORT void JNICALL Java_BHV_randomInto(JNIEnv *env, jclass, jbyteArray ja, jfloat jp) {
+    word_t *a = (word_t *) env->GetPrimitiveArrayCritical(ja, nullptr);
+    bhv::random_into(a, jp);
+    env->ReleasePrimitiveArrayCritical(ja, a, 0);
+}
+
 JNIEXPORT jlong JNICALL Java_BHV_active(JNIEnv * env, jobject, jbyteArray ja) {
     word_t *a = (word_t *) env->GetPrimitiveArrayCritical(ja, nullptr);
     uint32_t count = bhv::active(a);
     env->ReleasePrimitiveArrayCritical(ja, a, 0);
     return count;
+}
+
+JNIEXPORT void JNICALL Java_BHV_orInto(JNIEnv * env, jobject, jbyteArray ja, jbyteArray jb, jbyteArray jc) {
+    word_t *a = (word_t *)env->GetPrimitiveArrayCritical(ja, nullptr);
+    word_t *b = (word_t *)env->GetPrimitiveArrayCritical(jb, nullptr);
+    word_t *c = (word_t *)env->GetPrimitiveArrayCritical(jc, nullptr);
+    bhv::or_into(a, b, c);
+    env->ReleasePrimitiveArrayCritical(ja, a, 0);
+    env->ReleasePrimitiveArrayCritical(jb, b, 0);
+    env->ReleasePrimitiveArrayCritical(jc, c, 0);
+}
+
+JNIEXPORT void JNICALL Java_BHV_andInto(JNIEnv * env, jobject, jbyteArray ja, jbyteArray jb, jbyteArray jc) {
+    word_t *a = (word_t *)env->GetPrimitiveArrayCritical(ja, nullptr);
+    word_t *b = (word_t *)env->GetPrimitiveArrayCritical(jb, nullptr);
+    word_t *c = (word_t *)env->GetPrimitiveArrayCritical(jc, nullptr);
+    bhv::and_into(a, b, c);
+    env->ReleasePrimitiveArrayCritical(ja, a, 0);
+    env->ReleasePrimitiveArrayCritical(jb, b, 0);
+    env->ReleasePrimitiveArrayCritical(jc, c, 0);
 }
 
 JNIEXPORT void JNICALL Java_BHV_xorInto(JNIEnv * env, jobject, jbyteArray ja, jbyteArray jb, jbyteArray jc) {
