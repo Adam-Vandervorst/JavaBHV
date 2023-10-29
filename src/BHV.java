@@ -54,11 +54,11 @@ public class BHV {
         return ins;
     }
 
-    private static native void majorityInto(byte[][] xs, byte[] c);
+    private static native void majorityInto(Object[] xs, byte[] c);
     public static BHV majority(BHV[] xs) {
         // FIXME creating the bs array is wasteful
         BHV ins = new BHV();
-        byte[][] bs = new byte[BYTES][xs.length];
+        Object[] bs = new Object[xs.length];
         for (int i = 0; i < xs.length; ++i) {
             bs[i] = xs[i].data;
         }
@@ -106,29 +106,28 @@ public class BHV {
             x = x + (x % 7);
         }
 
+        System.out.println(x);
+
         int N = 201;
 
         long t0 = System.nanoTime();
 
         BHV[] rs = new BHV[N];
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++)
             rs[i] = BHV.rand();
-        }
 
         long t1 = System.nanoTime();
         System.out.println("rand: " + (t1 - t0));
 
         BHV[] ps = new BHV[N];
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++)
             ps[i] = rs[i].permute(42);
-        }
 
         long t2 = System.nanoTime();
         System.out.println("new permute: " + (t2 - t1));
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++)
             assert rs[i].equals(ps[i].permute(-42));
-        }
 
         long t3 = System.nanoTime();
         System.out.println("rpermute eq: " + (t3 - t2));
@@ -142,32 +141,29 @@ public class BHV {
         double[] qs = new double[N];
         if (false) {
             BHV[] ds = new BHV[N];
-            for (int i = 0; i < N; i++) {
+            for (int i = 0; i < N; i++)
                 ds[i] = rs[i].xor(m);
-            }
 
             t5 = System.nanoTime();
             System.out.println("xor: " + (t5 - t4));
 
-            for (int i = 0; i < N; i++) {
+            for (int i = 0; i < N; i++)
                 qs[i] = ds[i].active();
-            }
 
             long t6 = System.nanoTime();
             System.out.println("active: " + (t6 - t5));
         } else {
-            for (int i = 0; i < N; i++) {
+            for (int i = 0; i < N; i++)
                 qs[i] = m.hamming(rs[i]);
-            }
 
             t5 = System.nanoTime();
             System.out.println("hamming: " + (t5 - t4));
         }
 
         double sum = 0;
-        for (double q : qs) {
+        for (double q : qs)
             sum += q;
-        }
+
         System.out.println(sum / N);
     }
 

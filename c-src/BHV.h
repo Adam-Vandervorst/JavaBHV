@@ -58,7 +58,7 @@ JNIEXPORT void JNICALL Java_BHV_xorInto
 /*
  * Class:     BHV
  * Method:    majorityInto
- * Signature: ([[B[B)V
+ * Signature: ([Ljava/lang/Object;[B)V
  */
 JNIEXPORT void JNICALL Java_BHV_majorityInto
   (JNIEnv *, jclass, jobjectArray, jbyteArray);
