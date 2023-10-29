@@ -29,7 +29,7 @@ JNIEXPORT void JNICALL Java_BHV_randomInto
  * Signature: ([B)J
  */
 JNIEXPORT jlong JNICALL Java_BHV_active
-  (JNIEnv *, jobject, jbyteArray);
+  (JNIEnv *, jclass, jbyteArray);
 
 /*
  * Class:     BHV
@@ -37,7 +37,7 @@ JNIEXPORT jlong JNICALL Java_BHV_active
  * Signature: ([B[B[B)V
  */
 JNIEXPORT void JNICALL Java_BHV_orInto
-  (JNIEnv *, jobject, jbyteArray, jbyteArray, jbyteArray);
+  (JNIEnv *, jclass, jbyteArray, jbyteArray, jbyteArray);
 
 /*
  * Class:     BHV
@@ -45,7 +45,7 @@ JNIEXPORT void JNICALL Java_BHV_orInto
  * Signature: ([B[B[B)V
  */
 JNIEXPORT void JNICALL Java_BHV_andInto
-  (JNIEnv *, jobject, jbyteArray, jbyteArray, jbyteArray);
+  (JNIEnv *, jclass, jbyteArray, jbyteArray, jbyteArray);
 
 /*
  * Class:     BHV
@@ -53,7 +53,31 @@ JNIEXPORT void JNICALL Java_BHV_andInto
  * Signature: ([B[B[B)V
  */
 JNIEXPORT void JNICALL Java_BHV_xorInto
-  (JNIEnv *, jobject, jbyteArray, jbyteArray, jbyteArray);
+  (JNIEnv *, jclass, jbyteArray, jbyteArray, jbyteArray);
+
+/*
+ * Class:     BHV
+ * Method:    majorityInto
+ * Signature: ([[B[B)V
+ */
+JNIEXPORT void JNICALL Java_BHV_majorityInto
+  (JNIEnv *, jclass, jobjectArray, jbyteArray);
+
+/*
+ * Class:     BHV
+ * Method:    hamming
+ * Signature: ([B[B)J
+ */
+JNIEXPORT jlong JNICALL Java_BHV_hamming
+  (JNIEnv *, jclass, jbyteArray, jbyteArray);
+
+/*
+ * Class:     BHV
+ * Method:    permuteInto
+ * Signature: ([BJ[B)V
+ */
+JNIEXPORT void JNICALL Java_BHV_permuteInto
+  (JNIEnv *, jclass, jbyteArray, jlong, jbyteArray);
 
 #ifdef __cplusplus
 }
