@@ -1,3 +1,0 @@
-/home/adamv/IdeaProjects/JavaBHV/c-src/cmake-build-debug/CMakeFiles/bhv.dir
-/home/adamv/IdeaProjects/JavaBHV/c-src/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/adamv/IdeaProjects/JavaBHV/c-src/cmake-build-debug/CMakeFiles/rebuild_cache.dir
