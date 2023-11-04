@@ -30,4 +30,8 @@ bin/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
+.DS_Store*
+
+*.class
+*.o
+*.dylib
